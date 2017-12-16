@@ -39,8 +39,31 @@ class RelayPiPy():
 # Function init
 ########################################################
 
-    def init(self):
+    def init(self, _pinList):
         print "init"
+        self.pinList = _pinList
+        for i in pinList: 
+            GPIO.setup(i, GPIO.OUT) 
+
+        # Set pins to output and initialize them to false.
+#    GPIO.setup(self.powerLockPinA, GPIO.OUT)
+#    GPIO.output(self.powerLockPinA, False)
+#    GPIO.setup(self.powerLockPinB, GPIO.OUT)
+#    GPIO.output(self.powerLockPinB, False)
+
+# End Function init
+
+
+########################################################
+# Function init
+#
+# state should be set to GPIO.LOW or GPIO.HIGH
+########################################################
+
+    def setAllPins(self, state):
+        print "setAllPins"
+        for i in pinList: 
+            GPIO.output(i, state) 
 
         # Set pins to output and initialize them to false.
 #    GPIO.setup(self.powerLockPinA, GPIO.OUT)
@@ -56,21 +79,33 @@ class RelayPiPy():
 #
 ########################################################
 
-GPIO.setmode(GPIO.BCM)
+
+relay4 = RelayPiPy()
+
 
 # init list with pin numbers
-
 pinList = [6, 13, 19, 26]
+relay4.init(pinList)
+
+relay4.setAllPins(GPIO.HIGH)
+
+print "..."
+print
+
+
+
+
+
+GPIO.setmode(GPIO.BCM)
 
 # loop through pins and set mode and state to 'high'
-
 for i in pinList: 
     GPIO.setup(i, GPIO.OUT) 
     GPIO.output(i, GPIO.HIGH)
 
 # time to sleep between operations in the main loop
 
-SleepTimeL = 2
+SleepTimeL = .1
 
 # main loop
 
