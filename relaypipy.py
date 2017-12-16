@@ -2,11 +2,12 @@
 #
 
 
+# This work was built upon https://github.com/skiwithpete/relaypi
+
+
 # Import required libraries
 import time
 import RPi.GPIO as GPIO
-
-
 
 
 ########################################################
@@ -25,7 +26,7 @@ class RelayPiPy():
 ########################################################
 
     def __init__(self):
-        print "__init__"
+#        print "__init__"
   
         # Use BCM GPIO references
         # instead of physical pin numbers
@@ -40,98 +41,64 @@ class RelayPiPy():
 ########################################################
 
     def init(self, _pinList):
-        print "init"
+#        print "init"
         self.pinList = _pinList
-        for i in pinList: 
+        for i in self.pinList: 
             GPIO.setup(i, GPIO.OUT) 
-
-        # Set pins to output and initialize them to false.
-#    GPIO.setup(self.powerLockPinA, GPIO.OUT)
-#    GPIO.output(self.powerLockPinA, False)
-#    GPIO.setup(self.powerLockPinB, GPIO.OUT)
-#    GPIO.output(self.powerLockPinB, False)
 
 # End Function init
 
 
 ########################################################
-# Function init
+# Function setAllPins
 #
-# state should be set to GPIO.LOW or GPIO.HIGH
+# Input state should be set to GPIO.LOW or GPIO.HIGH
 ########################################################
 
     def setAllPins(self, state):
-        print "setAllPins"
-        for i in pinList: 
-            GPIO.output(i, state) 
+#        print "setAllPins"
+        for pin in self.pinList: 
+            GPIO.output(pin, state) 
 
-        # Set pins to output and initialize them to false.
-#    GPIO.setup(self.powerLockPinA, GPIO.OUT)
-#    GPIO.output(self.powerLockPinA, False)
-#    GPIO.setup(self.powerLockPinB, GPIO.OUT)
-#    GPIO.output(self.powerLockPinB, False)
+# End Function setAllPins
 
-# End Function init
+
+
+########################################################
+# Function shutdown
+########################################################
+
+    def shutdown(self):
+#        print "shutdown"
+        GPIO.cleanup()
+# End method shutdown
+
+
+
+
+########################################################
+# Function test1
+########################################################
+
+    def test1(self):
+#        print "test1"
+
+        self.setAllPins(GPIO.HIGH)
+
+        relay = 0
+        state = GPIO.LOW
+        timeSleep = .5
+
+        for pin in self.pinList: 
+            GPIO.output(pin, state)
+            relay += 1
+            print relay
+            time.sleep(timeSleep)
+
+# End Function test1
 
 ########################################################
 #
 # End class RelayPiPy
 #
 ########################################################
-
-
-relay4 = RelayPiPy()
-
-
-# init list with pin numbers
-pinList = [6, 13, 19, 26]
-relay4.init(pinList)
-
-relay4.setAllPins(GPIO.HIGH)
-
-print "..."
-print
-
-
-
-
-
-GPIO.setmode(GPIO.BCM)
-
-# loop through pins and set mode and state to 'high'
-for i in pinList: 
-    GPIO.setup(i, GPIO.OUT) 
-    GPIO.output(i, GPIO.HIGH)
-
-# time to sleep between operations in the main loop
-
-SleepTimeL = .1
-
-# main loop
-
-try:
-  GPIO.output(6, GPIO.LOW)
-  print "ONE"
-  time.sleep(SleepTimeL); 
-  GPIO.output(13, GPIO.LOW)
-  print "TWO"
-  time.sleep(SleepTimeL);  
-  GPIO.output(19, GPIO.LOW)
-  print "THREE"
-  time.sleep(SleepTimeL);
-  GPIO.output(26, GPIO.LOW)
-  print "FOUR"
-  time.sleep(SleepTimeL);
-  GPIO.cleanup()
-  print "Good bye!"
-
-# End program cleanly with keyboard
-except KeyboardInterrupt:
-  print "  Quit"
-
-  # Reset GPIO settings
-  GPIO.cleanup()
-
-
-# find more information on this script at
-# http://youtu.be/WpM1aq4B8-A
