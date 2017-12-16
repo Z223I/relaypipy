@@ -50,6 +50,28 @@ class RelayPiPy():
 
 
 ########################################################
+# Function off
+########################################################
+
+    def off(self, _pin):
+#        print "off"
+        GPIO.output(_pin, GPIO.LOW)
+
+# End Function off
+
+
+########################################################
+# Function on
+########################################################
+
+    def on(self, _pin):
+#        print "on"
+        GPIO.output(_pin, GPIO.HIGH)
+
+# End Function on
+
+
+########################################################
 # Function setAllPins
 #
 # Input state should be set to GPIO.LOW or GPIO.HIGH
