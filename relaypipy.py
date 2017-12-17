@@ -53,9 +53,10 @@ class RelayPiPy():
 # Function off
 ########################################################
 
-    def off(self, _pin):
+    def off(self, _relay):
 #        print "off"
-        GPIO.output(_pin, GPIO.LOW)
+        pin = self.pinList[_relay]
+        GPIO.output(pin, GPIO.LOW)
 
 # End Function off
 
@@ -64,9 +65,10 @@ class RelayPiPy():
 # Function on
 ########################################################
 
-    def on(self, _pin):
+    def on(self, _relay):
 #        print "on"
-        GPIO.output(_pin, GPIO.HIGH)
+        pin = self.pinList[_relay]
+        GPIO.output(pin, GPIO.HIGH)
 
 # End Function on
 
