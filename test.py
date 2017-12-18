@@ -7,6 +7,7 @@ from relaypipy import RelayPiPy
 relay4 = RelayPiPy()
 
 
+
 # init list with pin numbers
 pinList = [6, 13, 19, 26]
 relay4.init(pinList)
