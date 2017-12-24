@@ -23,7 +23,7 @@ class RelayPiPy():
 
     pinList = []
 ########################################################
-# Function __init__
+# method __init__
 ########################################################
 
     def __init__(self):
@@ -32,63 +32,68 @@ class RelayPiPy():
         # Use BCM GPIO references
         # instead of physical pin numbers
         GPIO.setmode(GPIO.BCM)
-# End Function __init__
+# End method __init__
 
 
 ########################################################
-# Function init
+# Method init
+# This method is to be called only once.  It should be
+# called by the main program.
+#
+# All other instances will access the class attribute
+# pinList.
 ########################################################
 
     def init(self, _pinList):
 #        print "init"
-        self.pinList = _pinList
-        for i in self.pinList: 
+        pinList = _pinList
+        for i in pinList: 
             GPIO.setup(i, GPIO.OUT) 
 
-# End Function init
+# End method init
 
 
 ########################################################
-# Function off
+# method off
 ########################################################
 
     def off(self, _relay):
 #        print "off"
-        pin = self.pinList[_relay]
+        pin = pinList[_relay]
         GPIO.output(pin, GPIO.HIGH)
 
-# End Function off
+# End method off
 
 
 ########################################################
-# Function on
+# method on
 ########################################################
 
     def on(self, _relay):
 #        print "on"
-        pin = self.pinList[_relay]
+        pin = pinList[_relay]
         GPIO.output(pin, GPIO.LOW)
 
-# End Function on
+# End method on
 
 
 ########################################################
-# Function setAllPins
+# method setAllPins
 #
 # Input state should be set to GPIO.LOW or GPIO.HIGH
 ########################################################
 
     def setAllPins(self, state):
 #        print "setAllPins"
-        for pin in self.pinList: 
+        for pin in pinList: 
             GPIO.output(pin, state) 
 
-# End Function setAllPins
+# End method setAllPins
 
 
 
 ########################################################
-# Function shutdown
+# method shutdown
 ########################################################
 
     def shutdown(self):
@@ -100,7 +105,7 @@ class RelayPiPy():
 
 
 ########################################################
-# Function test1
+# method test1
 ########################################################
 
     def test1(self):
@@ -112,13 +117,13 @@ class RelayPiPy():
         state = GPIO.LOW
         timeSleep = 1
 
-        for pin in self.pinList: 
+        for pin in pinList: 
             GPIO.output(pin, state)
             relay += 1
             print relay
             time.sleep(timeSleep)
 
-# End Function test1
+# End method test1
 
 ########################################################
 #
