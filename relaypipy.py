@@ -46,8 +46,8 @@ class RelayPiPy():
 
     def init(self, _pinList):
 #        print "init"
-        pinList = _pinList
-        for i in pinList: 
+        RelayPiPy.pinList = _pinList
+        for i in RelayPiPy.pinList: 
             GPIO.setup(i, GPIO.OUT) 
 
 # End method init
@@ -59,7 +59,7 @@ class RelayPiPy():
 
     def off(self, _relay):
 #        print "off"
-        pin = pinList[_relay]
+        pin = RelayPiPy.pinList[_relay]
         GPIO.output(pin, GPIO.HIGH)
 
 # End method off
@@ -71,7 +71,7 @@ class RelayPiPy():
 
     def on(self, _relay):
 #        print "on"
-        pin = pinList[_relay]
+        pin = RelayPiPy.pinList[_relay]
         GPIO.output(pin, GPIO.LOW)
 
 # End method on
