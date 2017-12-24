@@ -85,7 +85,7 @@ class RelayPiPy():
 
     def setAllPins(self, state):
 #        print "setAllPins"
-        for pin in pinList: 
+        for pin in RelayPiPy.pinList: 
             GPIO.output(pin, state) 
 
 # End method setAllPins
@@ -117,7 +117,7 @@ class RelayPiPy():
         state = GPIO.LOW
         timeSleep = 1
 
-        for pin in pinList: 
+        for pin in RelayPiPy.pinList: 
             GPIO.output(pin, state)
             relay += 1
             print relay
