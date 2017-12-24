@@ -21,7 +21,7 @@ import RPi.GPIO as GPIO
 
 class RelayPiPy():
 
-
+    pinList = []
 ########################################################
 # Function __init__
 ########################################################
@@ -32,8 +32,6 @@ class RelayPiPy():
         # Use BCM GPIO references
         # instead of physical pin numbers
         GPIO.setmode(GPIO.BCM)
-
-        self.pins = []
 # End Function __init__
 
 
@@ -57,7 +55,7 @@ class RelayPiPy():
     def off(self, _relay):
 #        print "off"
         pin = self.pinList[_relay]
-        GPIO.output(pin, GPIO.LOW)
+        GPIO.output(pin, GPIO.HIGH)
 
 # End Function off
 
@@ -69,7 +67,7 @@ class RelayPiPy():
     def on(self, _relay):
 #        print "on"
         pin = self.pinList[_relay]
-        GPIO.output(pin, GPIO.HIGH)
+        GPIO.output(pin, GPIO.LOW)
 
 # End Function on
 
@@ -112,7 +110,7 @@ class RelayPiPy():
 
         relay = 0
         state = GPIO.LOW
-        timeSleep = .5
+        timeSleep = 1
 
         for pin in self.pinList: 
             GPIO.output(pin, state)

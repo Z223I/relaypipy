@@ -15,24 +15,22 @@ relay4.init(pinList)
 
 try:
 
-  if False == GPIO.LOW:
-    print "False == GPIO.LOW"
-  else:
-    print "False != GPIO.LOW"
-
+  # Don't understand it but, GPIO.LOW is apparently ON
   relay4.setAllPins(GPIO.LOW)
+  time.sleep(1)
 
-  for relay in range(4):
-    relay4.off
+#  for relay in range(4):
+#    relay4.off(relay)
+#    time.sleep(1)
 
-  for relay in range(4):
-    relay4.on(relay)
-    time.sleep(.2)
+#  for relay in range(4):
+#    relay4.on(relay)
+#    time.sleep(1)
 
   relay4.setAllPins(GPIO.HIGH)
-  
+  time.sleep(2)
 
-#  relay4.test1()
+  relay4.test1()
 
   relay4.shutdown()
   print "Good bye!"
