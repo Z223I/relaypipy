@@ -16,6 +16,7 @@ relay4.init(pinList)
 try:
 
   # Don't understand it but, GPIO.LOW is apparently ON
+  # skiwithpete@github used reverse logic also.
   relay4.setAllPins(GPIO.LOW)
   time.sleep(1)
 
