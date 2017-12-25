@@ -20,13 +20,13 @@ try:
   relay4.setAllPins(GPIO.LOW)
   time.sleep(1)
 
-#  for relay in range(4):
-#    relay4.off(relay)
-#    time.sleep(1)
+  for relay in range(4):
+    relay4.off(relay)
+    time.sleep(1)
 
-#  for relay in range(4):
-#    relay4.on(relay)
-#    time.sleep(1)
+  for relay in range(4):
+    relay4.on(relay)
+    time.sleep(1)
 
   relay4.setAllPins(GPIO.HIGH)
   time.sleep(2)
