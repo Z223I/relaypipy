@@ -47,8 +47,14 @@ class RelayPiPy():
     def init(self, _pinList):
 #        print "init"
         RelayPiPy.pinList = _pinList
-        for i in RelayPiPy.pinList: 
-            GPIO.setup(i, GPIO.OUT) 
+#        print _pinList
+#        time.sleep(2)
+
+
+        for i in RelayPiPy.pinList:
+#            print i
+            GPIO.setup(i, GPIO.OUT, initial=1) 
+#            time.sleep(2)
 
 # End method init
 
