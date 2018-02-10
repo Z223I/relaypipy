@@ -126,7 +126,7 @@ class RelayPiPy():
         for pin in RelayPiPy.pinList: 
             GPIO.output(pin, state)
             relay += 1
-            print relay
+            print(relay)
             time.sleep(timeSleep)
 
 # End method test1
