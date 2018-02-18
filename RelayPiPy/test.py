@@ -2,7 +2,7 @@
 #
 import time
 import RPi.GPIO as GPIO
-from relaypipy import RelayPiPy
+from RelayPiPy import RelayPiPy
 
 relay4 = RelayPiPy()
 
@@ -34,11 +34,11 @@ try:
   relay4.test1()
 
   relay4.shutdown()
-  print "Good bye!"
+  print("Good bye!")
 
 # End program cleanly with keyboard
 except KeyboardInterrupt:
-  print "  Quit"
+  print("Quit")
 
   # Reset GPIO settings
   GPIO.cleanup()
